@@ -3,7 +3,7 @@
 	email = hangqian90@gmail.com
 [core]
 	editor = emacsclient -c
-	excludesfile = /Users/bank/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 [alias]
 	lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
 	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
@@ -15,10 +15,3 @@
     aup = add -u -p
 [push]
 	default = simple
-[sendemail]
-	from = Hang Qian <hang.qian@hulu.com>
-	smtpserver = smtp.office365.com
-	smtpuser = hang.qian@hulu.com
-	smtpencryption = tls
-	smtpserverport = 587
-	smtpsslcertpath = ""
