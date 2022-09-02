@@ -16,3 +16,6 @@
         aup = add -u -p
 [push]
         default = simple
+[delta]
+        line-numbers = true
+        navigate = true
