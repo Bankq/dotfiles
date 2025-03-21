@@ -1,3 +1,15 @@
 [font]
 size=18
 normal={family = "Anonymous Pro", style = "Regular"}
+
+[scrolling]
+multiplier = 3
+
+[window]
+decorations = "full"
+dynamic_title = true
+opacity = 0.93
+
+[window.dimensions]
+columns = 140
+lines = 40
