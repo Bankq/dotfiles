@@ -1,0 +1,33 @@
+# Minimal prompt focusing on directory, git state, and slow commands
+format = """
+$directory\
+$git_branch$git_status\
+$cmd_duration
+$line_break$character
+"""
+
+add_newline = false
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+vicmd_symbol = "[<](bold yellow)"
+
+[directory]
+format = "[$path]($style) "
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = false
+
+[git_branch]
+format = "[git:$branch]($style) "
+style = "bold blue"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style) "
+style = "bold yellow"
+
+[cmd_duration]
+min_time = 2000
+format = "took [$duration]($style) "
+style = "dimmed white"
