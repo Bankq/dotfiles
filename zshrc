@@ -55,3 +55,6 @@ source "$HOME/.cargo/env"
 
 eval "$(starship init zsh)"
 unsetopt autocd
+
+# zoxide
+eval "$(zoxide init zsh)"
