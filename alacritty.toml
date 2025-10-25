@@ -1,15 +1,121 @@
-[font]
-size=18
-normal={family = "Anonymous Pro", style = "Regular"}
+# Window configuration
+[window]
+opacity = 0.95
+padding = { x = 10, y = 10 }
+decorations = "Full"
+startup_mode = "Windowed"
+dynamic_title = true
+dynamic_padding = false
 
+# Scrolling
 [scrolling]
+history = 50000
 multiplier = 3
 
-[window]
-decorations = "full"
-dynamic_title = true
-opacity = 0.93
+# Font configuration
+[font]
+size = 18
+normal = { family = "Anonymous Pro", style = "Regular" }
+bold = { family = "Anonymous Pro", style = "Bold" }
+italic = { family = "Anonymous Pro", style = "Italic" }
+offset = { x = 0, y = 0 }
 
-[window.dimensions]
-columns = 140
-lines = 40
+# Cursor configuration
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 750
+unfocused_hollow = true
+
+# Colors (Catppuccin Mocha theme)
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+# Bell
+[bell]
+animation = "EaseOutExpo"
+duration = 100
+color = "#ffffff"
+
+# Selection
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# Mouse
+[mouse]
+hide_when_typing = true
+
+# Keyboard bindings
+[[keyboard.bindings]]
+key = "V"
+mods = "Command"
+action = "Paste"
+
+[[keyboard.bindings]]
+key = "C"
+mods = "Command"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Plus"
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Command"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Command"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Command"
+action = "SearchForward"
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Command"
+action = "ClearHistory"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "CreateNewWindow"
+
+# Mouse bindings
+[[mouse.bindings]]
+mouse = "Middle"
+action = "PasteSelection"
