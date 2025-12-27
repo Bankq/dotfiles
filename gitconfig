@@ -1,21 +1,49 @@
 [user]
-        name = Hang Qian
-        email = hangqian90@gmail.com
+	name = Hang Qian
+	email = hangqian90@gmail.com
+
 [core]
-        editor = emacsclient -c
-        excludesfile = $HOME/.gitignore_global
-        pager = delta
-[alias]
-        lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-        lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
-        co = checkout
-        st = status
-        cm = commit
-        df = diff
-        st = status
-        aup = add -u -p
+	editor = emacsclient -c
+	excludesfile = $HOME/.gitignore_global
+	pager = delta
+
+[init]
+	defaultBranch = main
+
 [push]
-        default = simple
+	default = simple
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+
+[diff]
+	algorithm = histogram
+	colorMoved = default
+
+[merge]
+	conflictstyle = zdiff3
+
+[rebase]
+	autosquash = true
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[alias]
+	lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+	co = checkout
+	st = status
+	cm = commit
+	df = diff
+	aup = add -u -p
+
 [delta]
-        line-numbers = true
-        navigate = true
+	line-numbers = true
+	navigate = true
