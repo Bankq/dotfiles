@@ -27,7 +27,7 @@ truncate_to_repo = false
 read_only = " ro"
 
 [git_branch]
-format = "[git:$branch]($style) "
+format = "[$branch]($style) "
 style = "bold blue"
 
 [git_status]
