@@ -1,60 +1,47 @@
-# PATH export needs to go on top in order to have plugins to work
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/python:/usr/texbin:/usr/local/mysql/bin:~/bin:/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
+# PATH - homebrew first, then system paths
+export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
-
-# Path to your oh-my-zsh configuration.
+# Oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
+ZSH_THEME=""  # Disabled - using Starship instead
+HYPHEN_INSENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="gallois"
-# ZSH_THEME="kennethreitz"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git z fzf emacs)
+# Plugins
+# Note: custom *.zsh files in ~/.oh-my-zsh/custom/ are auto-sourced
+plugins=(
+    git
+    fzf
+    emacs
+    brew
+    macos
+    sudo
+    copypath
+    copyfile
+    extract
+    colored-man-pages
+    dirhistory
+    history-substring-search
+)
 
 source $ZSH/oh-my-zsh.sh
-#source /usr/local/Cellar/autoenv/0.1.0/activate.sh
 
-# Customize to your needs...
+# Environment
+export EDITOR="emacsclient -c"
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-fi
+# PATH additions
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-# Alias
-alias ll=ls -l
-export EDITOR="emacsclient -c"
-source "$HOME/.cargo/env"
+# Aliases
+alias ll='ls -l'
 
-eval "$(starship init zsh)"
+# Shell options
 unsetopt autocd
 
-# zoxide
+# Prompt
+eval "$(starship init zsh)"
+
+# Zoxide (modern replacement for z)
 eval "$(zoxide init zsh)"
