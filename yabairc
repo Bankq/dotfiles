@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+# Minimal yabai configuration
+
+# Layout
+yabai -m config layout bsp
+yabai -m config split_ratio 0.50
+
+# Focus follows mouse
+yabai -m config focus_follows_mouse autofocus
+
+# Borders (green focused, gray normal)
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xff04C204
+yabai -m config normal_window_border_color 0xff7c7c7c
+
+# Gaps
+yabai -m config top_padding    8
+yabai -m config bottom_padding 8
+yabai -m config left_padding   8
+yabai -m config right_padding  8
+yabai -m config window_gap     8
+
+# Mouse (alt + drag)
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# App rules
+yabai -m rule --add app="^Alacritty$" space=1
+yabai -m rule --add app="^Google Chrome$" space=2
+
+echo "yabai configuration loaded."
