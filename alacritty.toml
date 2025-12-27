@@ -1,11 +1,22 @@
+# General settings
+[general]
+live_config_reload = true
+
+# Environment variables
+[env]
+TERM = "xterm-256color"
+
 # Window configuration
 [window]
-opacity = 0.95
-padding = { x = 10, y = 10 }
+opacity = 0.5
+blur = true
+padding = { x = 16, y = 12 }
 decorations = "Full"
+decorations_theme_variant = "Dark"
 startup_mode = "Windowed"
 dynamic_title = true
-dynamic_padding = false
+dynamic_padding = true
+option_as_alt = "Both"
 
 # Scrolling
 [scrolling]
@@ -14,50 +25,54 @@ multiplier = 3
 
 # Font configuration
 [font]
-size = 18
-normal = { family = "Anonymous Pro", style = "Regular" }
-bold = { family = "Anonymous Pro", style = "Bold" }
-italic = { family = "Anonymous Pro", style = "Italic" }
-offset = { x = 0, y = 0 }
+size = 16
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+offset = { x = 0, y = 2 }
+builtin_box_drawing = true
 
 # Cursor configuration
 [cursor]
-style = { shape = "Block", blinking = "On" }
-blink_interval = 750
+style = { shape = "Beam", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "Off" }
+blink_interval = 200
+blink_timeout = 0
 unfocused_hollow = true
 
-# Colors (Catppuccin Mocha theme)
+# Colors (Tokyo Night theme)
 [colors.primary]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#1a1b26"
+foreground = "#c0caf5"
 
 [colors.cursor]
-text = "#1e1e2e"
-cursor = "#f5e0dc"
+text = "#1a1b26"
+cursor = "#c0caf5"
 
 [colors.selection]
-text = "#1e1e2e"
-background = "#f5e0dc"
+text = "#c0caf5"
+background = "#33467c"
 
 [colors.normal]
-black = "#45475a"
-red = "#f38ba8"
-green = "#a6e3a1"
-yellow = "#f9e2af"
-blue = "#89b4fa"
-magenta = "#f5c2e7"
-cyan = "#94e2d5"
-white = "#bac2de"
+black = "#15161e"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#a9b1d6"
 
 [colors.bright]
-black = "#585b70"
-red = "#f38ba8"
-green = "#a6e3a1"
-yellow = "#f9e2af"
-blue = "#89b4fa"
-magenta = "#f5c2e7"
-cyan = "#94e2d5"
-white = "#a6adc8"
+black = "#414868"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#c0caf5"
 
 # Bell
 [bell]
@@ -73,6 +88,16 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 # Mouse
 [mouse]
 hide_when_typing = true
+
+# Hints (clickable URLs)
+[hints]
+enabled = [
+  { regex = "(https?://)[^\\s]+", hyperlinks = true, command = "open", post_processing = true, binding = { key = "U", mods = "Command|Shift" } }
+]
+
+# Terminal
+[terminal]
+shell = { program = "/bin/zsh", args = ["-l"] }
 
 # Keyboard bindings
 [[keyboard.bindings]]
@@ -114,6 +139,16 @@ action = "ClearHistory"
 key = "N"
 mods = "Command"
 action = "CreateNewWindow"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Command|Shift"
+action = "ToggleFullscreen"
+
+[[keyboard.bindings]]
+key = "Comma"
+mods = "Command"
+command = { program = "open", args = ["~/.config/alacritty/alacritty.toml"] }
 
 # Mouse bindings
 [[mouse.bindings]]
