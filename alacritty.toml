@@ -78,7 +78,7 @@ white = "#c0caf5"
 [bell]
 animation = "EaseOutExpo"
 duration = 100
-color = "#ffffff"
+color = "#f7768e"
 
 # Selection
 [selection]
@@ -94,10 +94,6 @@ hide_when_typing = true
 enabled = [
   { regex = "(https?://)[^\\s]+", hyperlinks = true, command = "open", post_processing = true, binding = { key = "U", mods = "Command|Shift" } }
 ]
-
-# Terminal
-[terminal]
-shell = { program = "/bin/zsh", args = ["-l"] }
 
 # Keyboard bindings
 [[keyboard.bindings]]
@@ -149,6 +145,26 @@ action = "ToggleFullscreen"
 key = "Comma"
 mods = "Command"
 command = { program = "open", args = ["~/.config/alacritty/alacritty.toml"] }
+
+[[keyboard.bindings]]
+key = "Up"
+mods = "Command"
+action = "ScrollLineUp"
+
+[[keyboard.bindings]]
+key = "Down"
+mods = "Command"
+action = "ScrollLineDown"
+
+[[keyboard.bindings]]
+key = "PageUp"
+mods = "Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "PageDown"
+mods = "Shift"
+action = "ScrollPageDown"
 
 # Mouse bindings
 [[mouse.bindings]]

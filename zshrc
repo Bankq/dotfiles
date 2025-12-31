@@ -72,6 +72,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt inc_append_history share_history hist_ignore_all_dups hist_reduce_blanks
 setopt extended_history
+setopt hist_ignore_space hist_verify hist_expire_dups_first
 
 # History substring search keybinds
 bindkey '^[[A' history-substring-search-up
@@ -100,6 +101,7 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {} 2>/dev/null | head -200"'
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact --sort"
 
 # Aliases
 alias ll='ls -l'
