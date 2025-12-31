@@ -67,3 +67,5 @@
 
 [url "git@github.com:"]
 	insteadOf = gh:
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
