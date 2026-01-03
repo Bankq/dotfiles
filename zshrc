@@ -78,17 +78,6 @@ setopt hist_ignore_space hist_verify hist_expire_dups_first
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Accept autosuggestion on Tab, fallback to completion
-_autosuggest_accept_or_complete() {
-    if [[ -n "$POSTDISPLAY" ]]; then
-        zle autosuggest-accept
-    else
-        zle expand-or-complete
-    fi
-}
-zle -N _autosuggest_accept_or_complete
-bindkey '^I' _autosuggest_accept_or_complete
-
 # Environment
 export EDITOR="emacsclient -c"
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
@@ -101,7 +90,7 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules}/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {} 2>/dev/null | head -200"'
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact --sort"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview,ctrl-n:down,ctrl-p:up,ctrl-k:kill-line' --exact --sort"
 
 # Aliases
 alias ll='ls -l'
