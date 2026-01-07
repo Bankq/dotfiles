@@ -3,6 +3,17 @@
 # Get the directory where this script is located
 DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 
+# Install Homebrew if missing
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Install packages from Brewfile
+echo "Installing Homebrew packages..."
+brew bundle --file="$DOTFILES/Brewfile"
+
 # macOS keyboard settings
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
