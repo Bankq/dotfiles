@@ -26,6 +26,14 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 mkdir -p "$HOME/.config/alacritty"
 mkdir -p "$HOME/.claude"
 
+# Clone emacs config if not already set up
+EMACS_REPO="git@github.com:Bankq/emacs.d.git"
+if ! git -C "$HOME/.emacs.d" remote get-url origin 2>/dev/null | grep -q "Bankq/emacs.d"; then
+    echo "Setting up emacs.d..."
+    [ -d "$HOME/.emacs.d" ] && mv "$HOME/.emacs.d" "$HOME/.emacs.d.bak.$(date +%s)"
+    git clone "$EMACS_REPO" "$HOME/.emacs.d"
+fi
+
 # Create symlinks
 ln -sf "$DOTFILES/zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES/gitconfig" "$HOME/.gitconfig"
