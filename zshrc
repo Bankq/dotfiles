@@ -16,33 +16,31 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-# Plugin bootstrap helper (run `omz_bootstrap_plugins` or set ZSH_BOOTSTRAP=1)
-omz_bootstrap_plugins() {
-    local zsh_custom="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+# Bootstrap oh-my-zsh and plugins (idempotent)
+_zsh_bootstrap() {
+    # Install oh-my-zsh if missing
+    if [[ ! -d "$ZSH" ]]; then
+        echo "Installing oh-my-zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+    fi
+
+    # Install custom plugins if missing
+    local zsh_custom="${ZSH_CUSTOM:-$ZSH/custom}"
     local -a specs=(
         "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
         "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting"
         "fzf-tab|https://github.com/Aloxaf/fzf-tab"
     )
-    local spec name repo
-    if ! command -v git >/dev/null 2>&1; then
-        echo "omz_bootstrap_plugins: git not found; skipping plugin install" >&2
-        return 1
-    fi
-    mkdir -p "$zsh_custom/plugins"
     for spec in "${specs[@]}"; do
-        name="${spec%%|*}"
-        repo="${spec##*|}"
+        local name="${spec%%|*}"
+        local repo="${spec##*|}"
         if [[ ! -d "$zsh_custom/plugins/$name" ]]; then
-            git clone "$repo" "$zsh_custom/plugins/$name"
-        else
-            git -C "$zsh_custom/plugins/$name" pull --ff-only
+            echo "Installing $name..."
+            git clone --depth=1 "$repo" "$zsh_custom/plugins/$name"
         fi
     done
 }
-if [[ -n "${ZSH_BOOTSTRAP:-}" ]]; then
-    omz_bootstrap_plugins
-fi
+_zsh_bootstrap
 
 # Plugins
 # Note: custom *.zsh files in ~/.oh-my-zsh/custom/ are auto-sourced
