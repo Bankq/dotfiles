@@ -1,3 +1,5 @@
+tap "d12frosted/emacs-plus"
+
 # Core CLI tools
 brew "git"
 brew "gh"
@@ -12,5 +14,5 @@ brew "node"
 
 # GUI apps
 cask "alacritty"
-cask "emacs-app"
+cask "emacs-plus-app"
 cask "font-jetbrains-mono-nerd-font"
