@@ -8,6 +8,7 @@ brew "bat"
 brew "git-delta"
 brew "starship"
 brew "zoxide"
+brew "node"
 
 # GUI apps
 cask "alacritty"

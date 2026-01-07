@@ -14,6 +14,10 @@ fi
 echo "Installing Homebrew packages..."
 brew bundle --file="$DOTFILES/Brewfile"
 
+# Install Claude Code
+echo "Installing Claude Code..."
+npm install -g @anthropic-ai/claude-code
+
 # macOS keyboard settings
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
