@@ -16,24 +16,30 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-# Bootstrap oh-my-zsh and plugins (idempotent)
+# Built-in oh-my-zsh plugins
+plugins=(
+    git fzf emacs brew macos sudo copypath copyfile
+    extract colored-man-pages dirhistory history-substring-search
+)
+
+# Custom plugins: add to this list to auto-install and load
+# Format: "name|https://github.com/..."
+_custom_plugins=(
+    "fzf-tab|https://github.com/Aloxaf/fzf-tab"
+    "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
+    "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting"
+    "you-should-use|https://github.com/MichaelAquilina/zsh-you-should-use"
+)
+
+# Bootstrap oh-my-zsh and custom plugins (idempotent)
 _zsh_bootstrap() {
-    # Install oh-my-zsh if missing
     if [[ ! -d "$ZSH" ]]; then
         echo "Installing oh-my-zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
     fi
-
-    # Install custom plugins if missing
     local zsh_custom="${ZSH_CUSTOM:-$ZSH/custom}"
-    local -a specs=(
-        "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
-        "fast-syntax-highlighting|https://github.com/zdharma-continuum/fast-syntax-highlighting"
-        "fzf-tab|https://github.com/Aloxaf/fzf-tab"
-    )
-    for spec in "${specs[@]}"; do
-        local name="${spec%%|*}"
-        local repo="${spec##*|}"
+    for spec in "${_custom_plugins[@]}"; do
+        local name="${spec%%|*}" repo="${spec##*|}"
         if [[ ! -d "$zsh_custom/plugins/$name" ]]; then
             echo "Installing $name..."
             git clone --depth=1 "$repo" "$zsh_custom/plugins/$name"
@@ -42,25 +48,8 @@ _zsh_bootstrap() {
 }
 _zsh_bootstrap
 
-# Plugins
-# Note: custom *.zsh files in ~/.oh-my-zsh/custom/ are auto-sourced
-plugins=(
-    git
-    fzf
-    fzf-tab
-    emacs
-    brew
-    macos
-    sudo
-    copypath
-    copyfile
-    extract
-    colored-man-pages
-    dirhistory
-    history-substring-search
-    zsh-autosuggestions
-    fast-syntax-highlighting
-)
+# Add custom plugin names to plugins array
+for spec in "${_custom_plugins[@]}"; do plugins+=("${spec%%|*}"); done
 
 source $ZSH/oh-my-zsh.sh
 
