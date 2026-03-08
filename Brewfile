@@ -14,5 +14,6 @@ brew "node"
 
 # GUI apps
 cask "alacritty"
+cask "ghostty"
 cask "emacs-plus-app"
 cask "font-jetbrains-mono-nerd-font"

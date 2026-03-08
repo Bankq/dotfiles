@@ -25,6 +25,7 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 # Create required directories
 mkdir -p "$HOME/.config/alacritty"
+mkdir -p "$HOME/.config/ghostty"
 mkdir -p "$HOME/.claude"
 
 # Clone emacs config if not already set up
@@ -39,6 +40,7 @@ fi
 ln -sf "$DOTFILES/zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES/gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+ln -sf "$DOTFILES/ghostty/config" "$HOME/.config/ghostty/config"
 ln -sf "$DOTFILES/starship.toml" "$HOME/.config/starship.toml"
 ln -sf "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
 
