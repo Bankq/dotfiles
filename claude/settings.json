@@ -3,6 +3,7 @@
     "commit": "",
     "pr": ""
   },
+  "model": "opus[1m]",
   "enabledPlugins": {
     "commit-commands@claude-plugins-official": true,
     "github@claude-plugins-official": true,

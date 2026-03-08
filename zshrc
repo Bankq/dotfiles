@@ -71,6 +71,7 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 # PATH additions
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # FZF defaults
@@ -96,3 +97,9 @@ eval "$(starship init zsh)"
 
 # Zoxide (modern replacement for z)
 eval "$(zoxide init zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/hqian01/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export SSH_AUTH_SOCK=/Users/hqian01/.yubiagent/sock

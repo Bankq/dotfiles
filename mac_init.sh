@@ -12,6 +12,7 @@ fi
 
 # Install packages from Brewfile
 echo "Installing Homebrew packages..."
+brew tap d12frosted/emacs-plus
 brew bundle --file="$DOTFILES/Brewfile"
 
 # Install Claude Code
