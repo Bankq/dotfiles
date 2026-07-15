@@ -124,4 +124,3 @@ gco() {
     return $rc
   fi
 }
->>>>>>> 3fec1ca (Add tmux, Claude settings tweaks, and worktree-aware gco helper)
