@@ -103,3 +103,25 @@ export PATH="/Users/hqian01/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 export SSH_AUTH_SOCK=/Users/hqian01/.yubiagent/sock
+
+# opencode
+export PATH=/Users/hang/.opencode/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# gco: git checkout, but if the branch is already checked out in another
+# worktree, cd there instead of failing
+unalias gco 2>/dev/null
+gco() {
+  git checkout "$@" && return
+  local rc=$? branch="${@[-1]}" dir
+  dir=$(git worktree list --porcelain | awk -v b="refs/heads/$branch" '
+    /^worktree / { wt = substr($0, 10) }
+    $1 == "branch" && $2 == b { print wt; exit }')
+  if [[ -n "$dir" ]]; then
+    echo "→ cd $dir" >&2
+    cd "$dir"
+  else
+    return $rc
+  fi
+}
+>>>>>>> 3fec1ca (Add tmux, Claude settings tweaks, and worktree-aware gco helper)

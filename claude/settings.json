@@ -1,16 +1,12 @@
 {
+  "env": {
+    "MAX_MCP_OUTPUT_TOKENS": "200000"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
   },
   "model": "opus[1m]",
-  "enabledPlugins": {
-    "commit-commands@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
-  },
   "permissions": {
     "ask": [
       "Read(./.env)",
@@ -18,5 +14,13 @@
       "Read(**/*secret*)",
       "Read(**/*credentials*)"
     ]
-  }
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "tui": "fullscreen"
 }

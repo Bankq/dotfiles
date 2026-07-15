@@ -11,6 +11,7 @@ brew "git-delta"
 brew "starship"
 brew "zoxide"
 brew "node"
+brew "tmux"
 
 # GUI apps
 cask "alacritty"
