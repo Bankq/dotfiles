@@ -98,11 +98,14 @@ eval "$(starship init zsh)"
 # Zoxide (modern replacement for z)
 eval "$(zoxide init zsh)"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/hqian01/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+# Work machine only
+if [[ "$USER" == "hqian01" ]]; then
+  ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+  export PATH="/Users/hqian01/.rd/bin:$PATH"
+  ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-export SSH_AUTH_SOCK=/Users/hqian01/.yubiagent/sock
+  export SSH_AUTH_SOCK=/Users/hqian01/.yubiagent/sock
+fi
 
 # opencode
 export PATH=/Users/hang/.opencode/bin:$PATH
